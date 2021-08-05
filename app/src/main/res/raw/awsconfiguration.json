@@ -1,0 +1,26 @@
+{
+  "UserAgent": "aws-amplify-cli/0.1.0",
+  "Version": "0.1.0",
+  "IdentityManager": {
+    "Default": {}
+  },
+  "CredentialsProvider": {
+    "CognitoIdentity": {
+      "Default": {
+        "PoolId": "ap-northeast-2:a345bb25-f947-4326-93ba-02ee9f949c67",
+        "Region": "ap-northeast-2"
+      }
+    }
+  },
+  "Auth": {
+    "Default": {
+      "authenticationFlowType": "USER_SRP_AUTH"
+    }
+  },
+  "S3TransferUtility": {
+    "Default": {
+      "Bucket": "babotest1",
+      "Region": "ap-northeast-2"
+    }
+  }
+}
