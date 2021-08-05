@@ -3,15 +3,16 @@ package com.example.myapplication
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.amplifyframework.core.Amplify
 import com.amplifyframework.core.Amplify.Storage
+import com.amplifyframework.storage.StorageException
+import com.amplifyframework.storage.result.StorageDownloadFileResult
 import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_main)
         val a = "12"
         //val exampleFile = File(applicationContext.filesDir, "ExampleKey")
         val exampleFile = File(applicationContext.filesDir, "bbb.txt")
@@ -26,6 +27,23 @@ class MainActivity : AppCompatActivity() {
             { error -> Log.d("MyAmplifyApp", "Upload failed", error) }
         )
 
+        Storage.downloadFile(
+            "test.txt",
+            File(applicationContext.filesDir.toString() + "/test.txt"),
+            { result: StorageDownloadFileResult ->
+                Log.i(
+                    "MyAmplifyApp",
+                    "Successfully downloaded: " + result.file.name
+                )
+            }
+        ) { error: StorageException? ->
+            Log.e(
+                "MyAmplifyApp",
+                "Download Failure",
+                error
+            )
+        }
 
+        
     }
 }
